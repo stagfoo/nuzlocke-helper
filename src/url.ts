@@ -1,33 +1,30 @@
 import page from 'page';
 import { state } from './index';
-import { hideNotifications, showNotifications } from './actions';
-
+import slugid from 'slugid';
 // Handlers
 const HOME_PAGE = (ctx, next) => {
   state._update('updateCurrentPage', 'HOME')
 };
-const EXAMPLE_FETCH = (ctx, next) => {
-  getData(window.location.origin + "/data.json").then(data => {
-    state._update('updateBucket', data.greeting)
-    state._update('updateCurrentPage', 'EXAMPLE_FETCH')
-    showNotifications("Shark data loaded  (´ε｀ )♡")
-    hideNotifications(1000)
-  })
+const ADD_POKEMON = (ctx, next) => {
+  console.log('ctx', ctx);
+  state._update('updateNewPokemon', {
+      id: slugid.nice(),
+      name:"",
+      lvl: "",
+      img:"",
+      inBox: ctx.querystring == "inbox=true"
+  });
+  state._update('updateCurrentPage', 'ADD_POKEMON')
 };
-
 // Routes
 page('/', HOME_PAGE);
-page('/example-fetch', EXAMPLE_FETCH);
+page('/add-pokemon', ADD_POKEMON);
 
 
 export function startRouters(): void {
   page.start();
 }
 
-//Network Call
-export async function getData(url: string) {
-  const resp = await fetch(url);
-  if (resp.ok) {
-    return resp.json();
-  } else throw new TypeError('getData response is not Ok');
+export function getPokemonByName(name:string) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) => data.json());
 }

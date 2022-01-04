@@ -6,7 +6,7 @@
 to start the project run
 
 ```
-$ npm run start; 
+npm run start; 
 ```
 
 ## Video explaining it here

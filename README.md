@@ -1,5 +1,8 @@
 # Nuzlocke Helper
 
+<p align="center"><img width="600px" src=".readme/screenshot-1.png" />
+</p>
+
 to start the project run
 
 ```
@@ -8,11 +11,9 @@ $ npm run start;
 
 ## Video explaining it here
 
-- Part 1 : 
-- Part 2 : 
-- Part 3 : 
-
----
+- Part 1: https://youtu.be/G2hEtXOzw3I
+- Part 2: https://youtu.be/LD8a5MQNa9E
+- Part 3: https://youtu.be/lbG0Hv_ADa8
 
 # Template used 
 
@@ -25,12 +26,6 @@ $ npm run start;
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </a>
 </p>
-
-a bucket for holding a form of bait used to attract sharks
-
-![jaws chum](https://thumbs.gfycat.com/ForkedAptFurseal-small.gif)
-
-# Whats inside
 
 - 🖼️ UI = [nanohtml](https://github.com/choojs/nanohtml)
 - 🍖 Store = [Obake.js](https://github.com/stagfoo/obake)

@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "joro": "^1.0.4",
+    "lodash": "^4.17.21",
     "morphdom": "^2.5.12",
     "nanohtml": "^1.9.0",
     "nanomorph": "^5.4.3",

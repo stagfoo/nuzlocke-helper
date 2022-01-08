@@ -3,6 +3,7 @@ import page from 'page'
 import * as NETWORK from './url'
 import * as pokemonNameDB from 'pokemon'
 import { State } from 'store';
+import * as _ from 'lodash'
 
 const _pokemonNameDB = pokemonNameDB.all('en');
 
@@ -33,7 +34,7 @@ export function handleSelectedResult(p: string) {
   NETWORK.getPokemonByName(p.toLowerCase()).then(res => {
     state._update('updateNewPokemon', {
       ...state.addNewPokemon,
-      img: res?.sprites?.other["official-artwork"]?.front_default
+      img: _.get(res, 'sprites.other["official-artwork"].front_default')
     });
     state._update('updateSearch', "");
     state._update('updateSearchResults', []);

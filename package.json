@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --content-base dist --hot --inline --mode=development",
     "build": "webpack -p",
-    "pwa": "cd nuzlocke-helper; create-pwa --icon=\"icon.png\" --launch=\"splash.png\"",
+    "pwa": "cd nuzlocke-helper; create-pwa --icon=\"icon.png\" --launch=\"splash.png\""
   },
   "author": "stagfoo",
   "license": "ISC",

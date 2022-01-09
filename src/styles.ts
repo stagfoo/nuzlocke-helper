@@ -167,10 +167,13 @@ export function BaseStyles() {
     }
 
     .pokemon {
-      width: 20vw;
+      max-width: 35vw;
       display:inline-block;
       position: relative;
-      margin: 0 auto;
+      margin: 0 auto 40px auto;
+    }
+    .inbox .pokemon {
+      max-width: 20vw;
     }
     .pokemon:hover .close {
       visibility: visible;
@@ -252,5 +255,8 @@ export function BaseStyles() {
       box-sizing:border-box;
     }
 
+    button.delete {
+      background: ${DS.colors.orange};
+    }
   `)
 }

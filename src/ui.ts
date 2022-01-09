@@ -80,8 +80,22 @@ export function routing(state: State) {
         <button class="ghost ${state.addNewPokemon.inBox ? "color": "bw"}" onclick=${ACTIONS.handleGhostClick}><img src="/ghost.png" /></button>
         </div>
         <button onclick=${ACTIONS.handleSavePokemon}>Add</button>
-        <button onclick=${ACTIONS.handleBack}>Back</button>
+        <button onclick=${ACTIONS.handleBack}>cancel</button>
       `;
+      case "EDIT_POKEMON":
+        return html`
+          <h1>ADD POKEMON</h1>
+          <input placeholder="Find that pokemon!" class="search" value=${state.searchBox} type="text" onkeyup=${ACTIONS.handleSearch} />
+          ${searchResults(state.searchResults)}
+          <img src="${state.addNewPokemon.img ? state.addNewPokemon.img  : "/pokeball.webp"}" />
+          <input placeholder="nickname" type="text"  value=${state.addNewPokemon.name} class="name" onkeyup=${ACTIONS.handleNickname} />
+          <div class="form">
+          <input placeholder="level" type="number" value=${state.addNewPokemon.lvl} class="level" onkeyup=${ACTIONS.handleLevel} />
+          <button class="ghost ${state.addNewPokemon.inBox ? "color": "bw"}" onclick=${ACTIONS.handleGhostClick}><img src="/ghost.png" /></button>
+          </div>
+          <button onclick=${ACTIONS.handleSavePokemon}>Save</button>
+          <button class="delete" onclick=${ACTIONS.handleBack}>Delete</button>
+        `;
     default:
       return html` <h1>404 CHUM</h1> `;
   }

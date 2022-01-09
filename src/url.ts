@@ -16,7 +16,7 @@ const ADD_POKEMON = (ctx, next) => {
   state._update('updateCurrentPage', 'ADD_POKEMON')
 };
 const EDIT_POKEMON = (ctx, next) => {
-  state._update('updateCurrentPage', 'ADD_POKEMON')
+  state._update('updateCurrentPage', 'EDIT_POKEMON')
 };
 // Routes
 page('/', HOME_PAGE);

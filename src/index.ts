@@ -29,4 +29,3 @@ function renderer(newState) {
 //Start Router listener
 startRouters();
 BaseStyles();
-

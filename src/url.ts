@@ -6,7 +6,6 @@ const HOME_PAGE = (ctx, next) => {
   state._update('updateCurrentPage', 'HOME')
 };
 const ADD_POKEMON = (ctx, next) => {
-  console.log('ctx', ctx);
   state._update('updateNewPokemon', {
       id: slugid.nice(),
       name:"",
@@ -16,15 +15,19 @@ const ADD_POKEMON = (ctx, next) => {
   });
   state._update('updateCurrentPage', 'ADD_POKEMON')
 };
+const EDIT_POKEMON = (ctx, next) => {
+  state._update('updateCurrentPage', 'ADD_POKEMON')
+};
 // Routes
 page('/', HOME_PAGE);
 page('/add-pokemon', ADD_POKEMON);
+page('/edit-pokemon', EDIT_POKEMON);
 
 
 export function startRouters(): void {
   page.start();
 }
 
-export function getPokemonByName(name:string) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) => data.json());
+export function getPokemonFromNetwork(id:number) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((data) => data.json());
 }

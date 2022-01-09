@@ -2,7 +2,7 @@ import { state, storageKey } from './index';
 import page from 'page'
 import * as NETWORK from './url'
 import * as pokemonNameDB from 'pokemon'
-import { State } from 'store';
+import { Pokemon, State } from 'store';
 import * as _ from 'lodash'
 
 const _pokemonNameDB = pokemonNameDB.all('en');
@@ -14,6 +14,12 @@ export function handleSavePokemon() {
 
 export function handleAddPokemon() {
   page('/add-pokemon')
+};
+export function handleEditPokemon(pokemon:Pokemon) {
+  state._update('updateNewPokemon', pokemon);
+  const nextState = state.listedPokemon.filter(p => p.id !== pokemon.id);
+  state._update('updateListedPokemon', nextState);
+  page('/edit-pokemon');
 };
 export function handleAddGhostPokemon() {
   page('/add-pokemon?inbox=true')
@@ -31,7 +37,8 @@ export function handleSearch(event) {
 };
 
 export function handleSelectedResult(p: string) {
-  NETWORK.getPokemonByName(p.toLowerCase()).then(res => {
+  const pokedexNumber = pokemonNameDB.getId(p);
+  NETWORK.getPokemonFromNetwork(pokedexNumber).then(res => {
     state._update('updateNewPokemon', {
       ...state.addNewPokemon,
       img: _.get(res, 'sprites.other["official-artwork"].front_default')

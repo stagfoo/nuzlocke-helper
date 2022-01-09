@@ -15,8 +15,8 @@ export function pokemonCard(pokemon: Pokemon){
   <div class="col" >
     <div class="pokemon">
       <img src="${pokemon.img}" />
-      <small>lvl: ${pokemon.lvl}</small>
-      <button class="close circle" onclick=${() => {ACTIONS.removePokemon(pokemon.id)}} ><span>+</span></button> 
+      <small>${pokemon.name}</small>
+      <button class="close circle" onclick=${() => {ACTIONS.handleEditPokemon(pokemon)}} ><span>+</span></button> 
     </div>
     </div>
   `
@@ -39,7 +39,6 @@ export function routing(state: State) {
     case "HOME":
       return html`
       <div class="current container">
-        <h1>CURRENT</h1>
         <div class="grid">
         <div class="col ${team.length >= 6 ? `hide`: ``}" >
           <button class="add circle" onclick=${ACTIONS.handleAddPokemon}>
@@ -56,7 +55,7 @@ export function routing(state: State) {
         <div class="inbox container">
         <h1>LOST SOULS</h1>
         <div class="grid">
-        <div class="col ${team.length >= 6 ? `hide`: ``}" >
+        <div class="col" >
         <button class="add circle" onclick=${ACTIONS.handleAddGhostPokemon}>
         <span>+</span>
         </button>

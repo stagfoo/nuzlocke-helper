@@ -61,7 +61,6 @@ export function roundButtons(name, size, ftsize, rotate, position, color) {
     top: -10px;
     right: -10px;
     `: ""}
-    ${rotate ? `transform: rotate(45deg)` : ""}
   }
   `
 }
@@ -183,6 +182,9 @@ export function BaseStyles() {
     .pokemon small {
       font-weight: bold;
       color: ${DS.colors.black};
+      text-align:center;
+      width: 100%;
+      display:block;
     }
     .ADD_POKEMON {
       padding: 20px;

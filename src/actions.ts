@@ -4,7 +4,6 @@ import * as NETWORK from './url'
 import * as pokemonNameDB from 'pokemon'
 import { Pokemon, State } from 'store';
 import * as _ from 'lodash'
-
 const _pokemonNameDB = pokemonNameDB.all('en');
 
 export function handleSavePokemon() {
@@ -37,7 +36,7 @@ export function handleSearch(event) {
 };
 
 export function handleSelectedResult(p: string) {
-  const pokedexNumber = pokemonNameDB.getId(p);
+  const pokedexNumber = (pokemonNameDB as any).getId(p);
   NETWORK.getPokemonFromNetwork(pokedexNumber).then(res => {
     state._update('updateNewPokemon', {
       ...state.addNewPokemon,
